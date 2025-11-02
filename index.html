@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>신곡 월드컵</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>🎵 2025 10월 신곡 월드컵</h1>
+      <div class="round-info" id="roundInfo">32강</div>
+    </div>
+
+    <div id="gameContainer">
+      <div class="matchup-container" id="matchupContainer">
+        <div class="song-card" id="song1">
+          <div
+            class="album-cover-wrapper"
+            id="coverWrapper1"
+            onclick="selectSong(0)"
+          >
+            <img class="album-cover" id="cover1" src="" alt="Album Cover" />
+            <iframe
+              class="youtube-player"
+              id="player1"
+              src=""
+              allow="autoplay"
+            ></iframe>
+          </div>
+          <div class="song-info">
+            <div class="song-details" onclick="selectSong(0)">
+              <div class="song-title" id="title1"></div>
+              <div class="artist-name" id="artist1"></div>
+              <div class="release-date" id="date1"></div>
+            </div>
+            <button
+              class="play-button"
+              id="playBtn1"
+              onclick="toggleMusic(event, 0)"
+            >
+              ▶
+            </button>
+          </div>
+        </div>
+
+        <div class="song-card" id="song2">
+          <div
+            class="album-cover-wrapper"
+            id="coverWrapper2"
+            onclick="selectSong(1)"
+          >
+            <img class="album-cover" id="cover2" src="" alt="Album Cover" />
+            <iframe
+              class="youtube-player"
+              id="player2"
+              src=""
+              allow="autoplay"
+            ></iframe>
+          </div>
+          <div class="song-info">
+            <div class="song-details" onclick="selectSong(1)">
+              <div class="song-title" id="title2"></div>
+              <div class="artist-name" id="artist2"></div>
+              <div class="release-date" id="date2"></div>
+            </div>
+            <button
+              class="play-button"
+              id="playBtn2"
+              onclick="toggleMusic(event, 1)"
+            >
+              ▶
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="round-transition" id="roundTransition">
+      <div class="transition-content">
+        <h2 id="transitionTitle">32강 완료!</h2>
+        <p id="transitionMessage">다음 라운드로 넘어갑니다</p>
+        <button class="transition-btn" onclick="continueToNextRound()">
+          계속하기
+        </button>
+      </div>
+    </div>
+
+    <div class="result-screen" id="resultScreen">
+      <h2 class="winner-title">🏆 이번 달 최고의 노래</h2>
+      <div class="winner-card">
+        <div class="album-cover-wrapper">
+          <img class="album-cover" id="winnerCover" src="" alt="Winner Album" />
+        </div>
+        <div class="song-title" id="winnerTitle"></div>
+        <div class="artist-name" id="winnerArtist"></div>
+        <div class="release-date" id="winnerDate"></div>
+      </div>
+      <button class="restart-btn" onclick="restartGame()">다시 하기</button>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

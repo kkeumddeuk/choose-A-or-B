@@ -1,0 +1,479 @@
+:root {
+  --color-cream-50: rgba(252, 252, 249, 1);
+  --color-cream-100: rgba(255, 255, 253, 1);
+  --color-gray-200: rgba(245, 245, 245, 1);
+  --color-slate-500: rgba(98, 108, 113, 1);
+  --color-charcoal-700: rgba(31, 33, 33, 1);
+  --color-charcoal-800: rgba(38, 40, 40, 1);
+  --color-teal-300: rgba(50, 184, 198, 1);
+  --color-teal-500: rgba(33, 128, 141, 1);
+  --color-teal-600: rgba(29, 116, 128, 1);
+  --color-bg-1: rgba(59, 130, 246, 0.08);
+  --color-bg-2: rgba(245, 158, 11, 0.08);
+  --color-bg-3: rgba(34, 197, 94, 0.08);
+  --color-primary: var(--color-teal-500);
+  --color-primary-hover: var(--color-teal-600);
+  --color-background: var(--color-cream-50);
+  --color-surface: var(--color-cream-100);
+  --color-text: rgba(19, 52, 59, 1);
+  --color-text-secondary: var(--color-slate-500);
+  --font-family-base: "FKGroteskNeue", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Malgun Gothic", sans-serif;
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-charcoal-700);
+    --color-surface: var(--color-charcoal-800);
+    --color-text: var(--color-gray-200);
+    --color-text-secondary: rgba(167, 169, 169, 0.7);
+    --color-primary: var(--color-teal-300);
+    --color-bg-1: rgba(29, 78, 216, 0.15);
+    --color-bg-2: rgba(180, 83, 9, 0.15);
+    --color-bg-3: rgba(21, 128, 61, 0.15);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family-base);
+  background: var(--color-background);
+  color: var(--color-text);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-teal-300)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.round-info {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.matchup-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding: 20px;
+}
+
+.song-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.song-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15),
+    0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .song-card {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .song-card:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.song-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--color-bg-1), var(--color-bg-2));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.song-card:hover::before {
+  opacity: 1;
+}
+
+.album-cover-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-bg-1), var(--color-bg-3));
+}
+
+.album-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.youtube-player {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  border: none;
+  display: none;
+}
+
+.youtube-player.active {
+  display: block;
+}
+
+.round-transition {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.round-transition.active {
+  display: flex;
+}
+
+.transition-content {
+  background: var(--color-surface);
+  padding: 60px 80px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  animation: popIn 0.5s ease;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.transition-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--color-primary);
+}
+
+.transition-content p {
+  font-size: 1.3rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 30px;
+}
+
+.transition-btn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.transition-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+.song-info {
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.song-details {
+  flex: 1;
+}
+
+.play-button {
+  background: transparent;
+  color: #000;
+  border: none;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.play-button:hover {
+  color: #333;
+  transform: scale(1.1);
+}
+
+.play-button:active {
+  transform: scale(0.95);
+}
+
+.song-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.artist-name {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+}
+
+.release-date {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  opacity: 0.8;
+}
+
+.vs-badge {
+  display: none;
+}
+
+.result-screen {
+  display: none;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.result-screen.active {
+  display: block;
+}
+
+.winner-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-lg);
+  margin-top: 40px;
+}
+
+.winner-card .album-cover-wrapper {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto 24px;
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--color-bg-1), var(--color-bg-3));
+  border-radius: var(--radius-lg);
+}
+
+.winner-card .album-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.winner-card .song-title {
+  font-size: 1.5rem;
+}
+
+.winner-card .artist-name {
+  font-size: 1.1rem;
+}
+
+.winner-card .release-date {
+  font-size: 0.95rem;
+}
+
+.winner-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: var(--color-primary);
+}
+
+.restart-btn {
+  margin-top: 30px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.restart-btn:hover {
+  background: var(--color-primary-hover);
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .header {
+    margin-bottom: 10px;
+    flex-shrink: 0;
+  }
+
+  .header h1 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+  }
+
+  .round-info {
+    font-size: 0.85rem;
+  }
+
+  .matchup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 0;
+    max-width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .song-card {
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .album-cover-wrapper {
+    flex: 1;
+    min-height: 180px;
+    aspect-ratio: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--color-bg-1), var(--color-bg-3));
+  }
+
+  .album-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .song-info {
+    padding: 10px 12px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .song-details {
+    flex: 1;
+  }
+
+  .play-button {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+    margin-left: 8px;
+  }
+
+  .song-title {
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .artist-name {
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+
+  .release-date {
+    font-size: 0.75rem;
+  }
+
+  .vs-badge {
+    display: none;
+  }
+
+  .winner-card {
+    padding: 20px;
+  }
+
+  .winner-card .album-cover-wrapper {
+    max-width: 280px;
+  }
+
+  .winner-title {
+    font-size: 1.5rem;
+  }
+
+  .transition-content {
+    padding: 40px 30px;
+  }
+
+  .transition-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .transition-content p {
+    font-size: 1rem;
+  }
+}
