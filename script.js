@@ -3,7 +3,7 @@ const songs = [
     title: "행운의 달 (Lucky12)",
     artist: "원위(ONEWE)",
     date: "2025.10.07",
-    cover: "./images/원위-행운의달.webp",
+    cover: "./images/onewe.webp",
     youtube: "https://youtu.be/pQ7Zj8CbCoU",
   },
   {
@@ -45,7 +45,7 @@ const songs = [
     title: "Round&Round",
     artist: "배진영",
     date: "2025.10.14",
-    cover: "./images/배진영-roundnround.webp",
+    cover: "./images/roundnround.webp",
     youtube: "https://youtu.be/YpPqIK4JpcI",
   },
   {
@@ -66,14 +66,14 @@ const songs = [
     title: "타임캡슐",
     artist: "다비치(DAVICHI)",
     date: "2025.10.16",
-    cover: "./images/다비치-타임캡슐.webp",
+    cover: "./images/davichi.webp",
     youtube: "https://youtu.be/qE35JN1ogeI",
   },
   {
     title: "비가 오면",
     artist: "양다일",
     date: "2025.10.19",
-    cover: "./images/양다일-비가오면.webp",
+    cover: "./images/yangdail.webp",
     youtube: "https://youtu.be/x_oX6kwCACU",
   },
   {
@@ -95,7 +95,7 @@ const songs = [
     title: "첫사랑은 안녕히-",
     artist: "잔나비",
     date: "2025.10.21",
-    cover: "./images/잔나비-첫사랑은안녕히.jpg",
+    cover: "./images/jannabi.jpg",
     youtube: "https://youtu.be/tN5vZjgmFxo",
   },
   {
@@ -109,7 +109,7 @@ const songs = [
     title: "주르르",
     artist: "이창섭",
     date: "2025.10.22",
-    cover: "./images/이창섭-주르르.jpg",
+    cover: "./images/leechangsub.jpg",
     youtube: "https://youtu.be/jDNCmVejil4",
   },
   {
@@ -151,14 +151,14 @@ const songs = [
     title: "Reno (Feat. Colde)",
     artist: "미연",
     date: "2025.10.28",
-    cover: "./images/미연-reno.jpg",
+    cover: "./images/reno.jpg",
     youtube: "https://youtu.be/nXWEZT0fVYY",
   },
   {
     title: "Last Light",
     artist: "서은광",
     date: "2025.10.29",
-    cover: "./images/서은광-lastlight.jpg",
+    cover: "./images/lastlight.jpg",
     youtube: "https://youtu.be/9tafOVzMqk4",
   },
   //24
@@ -174,7 +174,7 @@ const songs = [
     title: "작은 나보다 커다란 세상이 문을 열어 줄 것 같아",
     artist: "FTISLAND",
     date: "2025.10.31",
-    cover: "./images/ftisland-작은나보다.jpg",
+    cover: "./images/ftisland.jpg",
     youtube: "https://youtu.be/SjGw9K4yJkw",
   },
   //26
@@ -190,7 +190,7 @@ const songs = [
     title: "Chequered Flag (Feat. 유현 of 드림캐쳐)",
     artist: "다미",
     date: "2025.10.31",
-    cover: "./images/다미-chequeredflag.jpg",
+    cover: "./images/chequeredflag.jpg",
     youtube: "https://youtu.be/goNL5jE3LIQ",
   },
   //28
@@ -198,7 +198,7 @@ const songs = [
     title: "사랑은 어쩌고",
     artist: "LUCY",
     date: "2025.10.30",
-    cover: "./images/lucy-사랑은어쩌고.jpg",
+    cover: "./images/lucy.jpg",
     youtube: "https://youtu.be/C4Ndp_Lq7VM",
   },
   //29
@@ -206,7 +206,7 @@ const songs = [
     title: "앞머리",
     artist: "정승환",
     date: "2025.10.30",
-    cover: "./images/정승환앞머리.jpg",
+    cover: "./images/prayer.jpg",
     youtube: "https://youtu.be/kKrEc4t8TN8",
   },
   //30
@@ -222,7 +222,7 @@ const songs = [
     title: "I'm Missing You",
     artist: "범키",
     date: "2025.10.30",
-    cover: "./images/범키immissingyou.jpg",
+    cover: "./images/immissingyou.jpg",
     youtube: "https://youtu.be/oi5Lk7bKVXY",
   },
   //32
